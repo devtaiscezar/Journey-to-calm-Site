@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey to Calm 🍙 </title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google tag (gtag.js) -->
+    <script src="script.js"> </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2DNV5W5MJQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2DNV5W5MJQ');
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1> Welcome to the Journey to Calm </h1>
+        <p>Bem-vindo à sua jornada para um estado mental e emocional mais equilibrado. 
+            Sabemos que a vida pode ser desafiadora, e estamos aqui para oferecer apoio e ferramentas para promover sua saúde mental e bem-estar emocional.
+
+            Como você está se sentindo hoje?
+            
+            Escolha uma das opções abaixo e explore recursos, dicas e atividades criadas para ajudá-lo a navegar pelos altos e baixos da vida. Seja qual for sua emoção, estamos aqui para acompanhá-lo nesta jornada de autoconhecimento e fortalecimento emocional.</p>
+        <p><strong> O que está sentindo nesse momento?</strong></p>
+    </div>
+    <div id="characterContainer">
+        <div class="character" onclick="openCharacterPage('guia')" aria-label="Acessar a página do personagem Guia" role="button">
+            <a href="guia/guia.html">
+            <img src="imagens/guia.png" alt="Imagem do personagem Guia" aria-label="Personagem Guia" />
+            <p class="nome-do-personagem">Guia</p>
+            </a>
+        </div>
+
+        <div class="character" onclick="openCharacterPage('ansiedade')" aria-label="Acessar a página do personagem Ansiedade" role="button">
+            <a href="ansiedade/ansiedade.html">
+            <img src="imagens/ansiedade.png" alt="Imagem do personagem Ansiedade" aria-label="Personagem Ansiedade" />
+            <p class="nome-do-personagem">Ansiedade </p>
+            </a>
+        </div>
+
+        <div class="character" onclick="openCharacterPage('Raiva')" aria-label="Acessar a página do personagem Raiva" role="button">
+            <a href="raiva/raiva.html">
+            <img src="imagens/raiva.png" alt="Imagem do personagem Raiva" aria-label="Personagem Raiva" />
+            <p class="nome-do-personagem">Raiva</p>
+            </a>
+        </div>
+
+        <div class="character" onclick="openCharacterPage('tristeza')" aria-label="Acessar a página do personagem Tristeza" role="button">
+            <a href="tristeza/tristeza.html">
+            <img src="imagens/tristeza.png" alt="Imagem do personagem Tristeza" aria-label="Personagem Tristeza" />
+            <p class="nome-do-personagem">Tristeza</p>
+            </a>
+        </div> 
+        
+        <div class="character" onclick="openCharacterPage('felicidade')" aria-label="Acessar a página do personagem Felicidade" role="button">
+            <a href="felicidade/felicidade.html">
+            <img src="imagens/felicidade.png" alt="Imagem do personagem Felicidade" aria-label="Personagem Felicidade" />
+            <p class="nome-do-personagem">Felicidade</p>
+            </a>
+        </div> 
+    
+        <div class="character" onclick="openCharacterPage('apoio')" aria-label="Acessar a página do personagem Apoio" role="button">
+            <a href="apoio/apoio.html">
+            <img src="imagens/apoio.png" alt="Imagem do personagem Apoio" aria-label="Personagem Apoio" />
+            <p class="nome-do-personagem">Apoio</p>
+            </a>
+        </div>
+
+        <div class="character" onclick="openCharacterPage('sos')" aria-label="Acessar a página do personagem S.O.S." role="button">
+            <a href="sos/sos.html">
+            <img src="imagens/sos.png" alt="Imagem do personagem S.O.S." aria-label="Personagem S.O.S." />
+            <p class="nome-do-personagem">S.O.S</p>  
+            </a>
+        </div>
+
+    <audio id="backgroundMusic">
+        <source src="musicas/musica_inicial.mp3" type="audio/mp3">
+    </audio>
+    <audio id="backgroundMusic">
+        <source src="musicas/musica_inicial.mp3" type="audio/mp3">
+    </audio>
+    <audio id="backgroundMusic">
+        <source src="musicas/musica_inicial.mp3" type="audio/mp3">
+    </audio>
+
+<button id="startMusic" onclick="startMusic()" aria-label="Iniciar a música de fundo">Iniciar Música</button>
+<button id="toggleTheme" onclick="toggleTheme()" aria-label="Trocar entre tema claro e escuro">Trocar Tema</button>
+
+<script>
+ const music = document.getElementById('backgroundMusic');
+music.volume = 0.2;
+        
+function startMusic() {
+music.play().catch(error => {
+console.log('Erro ao tentar tocar a música:', error);
+            });
+        }
+        
+        function openCharacterPage(character) {
+            music.pause();
+            window.location.href = `${character}/${character}.html`;
+        }
+        
+        let darkMode = false;
+        
+        function toggleTheme() {
+            darkMode = !darkMode;
+            
+            if (darkMode) {
+                document.body.style.backgroundColor = '#121212';
+            }
+        }
+        </script>
+</body>
+</html>
