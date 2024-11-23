@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Calmi - Uma experiência de meditação guiada para encontrar paz e tranquilidade">
+    <title>Calmi - Jornada para a Calma</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-color: #88B04B;
+            --secondary-color: #496B2F;
+            --text-color: #333;
+            --white: #ffffff;
+            --transition-slow: 0.5s ease-in-out;
+            --transition-medium: 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+        
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Poppins', sans-serif;
+            color: var(--white);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-weight: 600;
+        }
+
+        .breathing-container {
+            position: relative;
+            margin: 2rem auto;
+            width: 250px;
+            height: 250px;
+        }
+
+        .breathing-circle {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform var(--transition-slow);
+        }
+
+        #calmiText {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--white);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            transition: opacity var(--transition-medium);
+            z-index: 2;
+        }
+
+        #calmiMessages {
+            min-height: 60px;
+            margin: 2rem 0;
+            font-size: 1.25rem;
+            color: var(--white);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity var(--transition-medium);
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            background-color: rgba(73, 107, 47, 0.8);
+            color: var(--white);
+            transition: all var(--transition-medium);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .breathing-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            #calmiMessages {
+                font-size: 1rem;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .breathe {
+            animation: breathe 8s infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <video src="videos/green-way"></video>
+    </div>
+    <div class="container fade-in">
+        <h1>Respire com Calmi</h1>
+        
+        <div class="breathing-container">
+            <svg class="breathing-circle" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Gradiente de fundo -->
+                <defs>
+                    <radialGradient id="circleGradient" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:#88B04B" stop-opacity="0.9"/>
+                        <stop offset="100%" style="stop-color:#496B2F" stop-opacity="0.7"/>
+                    </radialGradient>
+                    <!-- Gradiente para o brilho -->
+                    <radialGradient id="glowGradient" cx="50%" cy="50%" r="50%">
+                        <stop offset="0%" style="stop-color:white" stop-opacity="0.3"/>
+                        <stop offset="100%" style="stop-color:white" stop-opacity="0"/>
+                    </radialGradient>
+                </defs>
+                
+                <!-- Círculo de brilho externo -->
+                <circle cx="100" cy="100" r="95" fill="url(#glowGradient)"/>
+                
+                <!-- Círculo principal -->
+                <circle cx="100" cy="100" r="90" fill="url(#circleGradient)"/>
+                
+                <!-- Elementos decorativos orgânicos -->
+                <path d="M100,30 Q130,70 100,110 Q70,70 100,30" 
+                    fill="rgba(255,255,255,0.1)" />
+                <path d="M30,100 Q70,130 110,100 Q70,70 30,100" 
+                    fill="rgba(255,255,255,0.1)" />
+                <path d="M100,170 Q130,130 100,90 Q70,130 100,170" 
+                    fill="rgba(255,255,255,0.1)" />
+                <path d="M170,100 Q130,130 90,100 Q130,70 170,100" 
+                    fill="rgba(255,255,255,0.1)" />
+            </svg>
+            <span id="calmiText">Inspire</span>
+        </div>
+
+        <div id="calmiMessages" role="status" aria-live="polite"></div>
+
+        <div class="controls">
+            <button id="startButton" class="btn" onclick="toggleExercise()" aria-label="Iniciar exercício">
+                Iniciar
+            </button>
+            <button id="backButton" class="btn" onclick="goBack()" aria-label="Voltar para a página inicial">
+                Voltar
+            </button>
+        </div>
+    </div>
+
+    <audio id="calmiMusic" preload="auto">
+        <source src="calmi.mp3" type="audio/mp3">
+    </audio>
+
+    <script>
+        const calmiMessages = [
+            "Respire profundamente... puxa o ar... solta o ar...",
+            "Você está seguro e em paz.",
+            "Sinta a calma invadindo seu corpo.",
+            "A cada respiração, relaxe mais.",
+            "Este momento é seu, respire devagar.",
+            "Você está no controle de suas emoções.",
+            "Acalme sua mente, foque na respiração.",
+            "Respire, você está no presente.",
+            "Cada respiração alivia a tensão.",
+            "Sua mente pode encontrar paz.",
+        ];
+
+        let exerciseInterval;
+        let currentMessageIndex = 0;
+        const calmiText = document.getElementById("calmiText");
+        const calmiMessagesEl = document.getElementById("calmiMessages");
+        const startButton = document.getElementById("startButton");
+        const calmiCircle = document.querySelector(".breathing-circle");
+        const audio = document.getElementById("calmiMusic");
+        let isExercising = false;
+
+        function toggleExercise() {
+            isExercising = !isExercising;
+
+            if (isExercising) {
+                startButton.innerText = "Pausar";
+                calmiText.innerText = "Inspire";
+                calmiCircle.classList.add("breathe");
+                calmiMessagesEl.classList.add("fade-in");
+                audio.play();
+                displayMessages();
+            } else {
+                startButton.innerText = "Iniciar";
+                calmiCircle.classList.remove("breathe");
+                clearInterval(exerciseInterval);
+                audio.pause();
+                audio.currentTime = 0;
+                calmiMessagesEl.classList.remove("fade-in");
+                calmiText.innerText = "Respire com Calmi";
+            }
+        }
+
+        function displayMessages() {
+            exerciseInterval = setInterval(() => {
+                if (currentMessageIndex >= calmiMessages.length) currentMessageIndex = 0;
+                calmiMessagesEl.innerText = calmiMessages[currentMessageIndex];
+                currentMessageIndex++;
+            }, 5000);
+        }
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</body>
+</html>
